@@ -1,2 +1,3 @@
 # pgtraining
-# pgtraining
+
+Playbook for PG training
