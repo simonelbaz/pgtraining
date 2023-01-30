@@ -1,0 +1,9 @@
+---
+
+- hosts: database
+  roles:
+    - role: postgresql
+
+- hosts: master
+  roles:
+    - role: postgresql-wal

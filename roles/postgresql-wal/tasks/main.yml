@@ -1,0 +1,29 @@
+---
+- name: Activation des WAL au niveau replica
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /var/lib/pgsql/15/data/postgresql.conf
+    regexp: '^wal_level'
+    line: wal_level = replica
+
+- name: Activation du mode archive
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /var/lib/pgsql/15/data/postgresql.conf
+    regexp: '^archive_mode'
+    line: archive_mode = on
+
+- name: Mise en place de la commande d archivage
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /var/lib/pgsql/15/data/postgresql.conf
+    regexp: '^archive_command'
+    line: archive_command = 'rsync \%p 10.10.10.29:/mnt/server/archivedir/\%f' 
+
+- name: Activer le service postgresql-15
+  become: yes
+  ansible.builtin.service:
+    name: postgresql-15
+    state: restarted
+    enabled: true
+
