@@ -18,7 +18,7 @@
   ansible.builtin.lineinfile:
     path: /var/lib/pgsql/15/data/postgresql.conf
     regexp: '^archive_command'
-    line: archive_command = 'rsync \%p 10.10.10.29:/mnt/server/archivedir/\%f' 
+    line: archive_command = 'rsync \%p 10.10.10.29:/opt/archivedir/\%f' 
 
 - name: Activer le service postgresql-15
   become: yes

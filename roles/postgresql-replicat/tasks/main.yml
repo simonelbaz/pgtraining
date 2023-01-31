@@ -1,0 +1,15 @@
+---
+- name: Creation du repertoire d archivage des WALs
+  become: yes
+  ansible.builtin.file:
+    path: /opt/archivedir
+    state: directory
+    owner: postgres
+
+- name: Activer le service postgresql-15
+  become: yes
+  ansible.builtin.service:
+    name: postgresql-15
+    state: restarted
+    enabled: true
+

@@ -7,3 +7,7 @@
 - hosts: master
   roles:
     - role: postgresql-wal
+
+- hosts: standby
+  roles:
+    - role: postgresql-replicat
