@@ -6,6 +6,13 @@
     state: directory
     owner: postgres
 
+- name: Creation du repertoire des backups
+  become: yes
+  ansible.builtin.file:
+    path: /opt/backup
+    state: directory
+    owner: postgres
+
 - name: Activer le service postgresql-15
   become: yes
   ansible.builtin.service:
